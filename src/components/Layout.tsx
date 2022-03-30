@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Footer from "./Footer";
 import Header from "../components/Header ";
 import NavBar from "../components/NavBar";
@@ -8,65 +8,54 @@ const Layout = () => {
   const navBarItems = ["book1", "book2"];
   return (
     <>
-      <Container>
-        <Head>
-        <header>
-          <NavLink to="/">Home-</NavLink>
-          <NavLink to="/profile">Profile-</NavLink>
-          <NavLink to="/product">Product</NavLink>
-        </header>
+      <StyledWraper>
+        <header className="header">
           <Header />
-        </Head>
-        <Nav>
-          <NavBar navBarItems={navBarItems} />
-        </Nav>
-        <Cont>
-          <Outlet />
-        </Cont>
-        <Foot>
+        </header>
+        <main className="main">
+          <aside className="navBar">
+            <NavBar navBarItems={navBarItems} />
+          </aside>
+          <article className="content">
+            <Outlet />
+          </article>
+        </main>
+        <footer className="footer">
           <Footer />
-        </Foot>
-        <Footer />
-      </Container>
+        </footer>
+      </StyledWraper>
     </>
   );
 };
 
-const Head = styled.header`
-  background: black;
-  grid-area: Head;
-  padding: 5px;
-`;
+const StyledWraper = styled.div`
+  display: flex;
+  flex-direction: column;
 
-const Nav = styled.div`
-  background: #9aaab7;
-  grid-area: Nav;
-  padding: 5px; ;
-`;
-
-const Cont = styled.div`
-  background: #1f2128;
-  color: white;
-  grid-area: Cont;
-  padding: 5px;
-`;
-
-const Foot = styled.div`
-  background: #ff9637;
-  grid-area: Foot;
-`;
-
-const Container = styled.div`
-  display: grid;
-  height: 100vh;
-  color: white;
-  grid-template-rows: 1fr 10fr 1px;
-  grid-template-columns: 1fr 5fr;
-  grid-template-areas:
-    "Head Head"
-    "Nav Cont"
-    "Foot Foot";
-  grid-gap: 5px;
+  .header {
+    flex: 0 0 150px;
+    background-color: aqua;
+  }
+  .main {
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 100%;
+    min-height: calc(100vh - 150px - 70px);
+    
+  }
+  .navBar {
+    flex: 0 0 20%;
+    background-color: yellow;
+    
+  }
+  .content {
+    flex: 0 0 80%;
+    background-color: gray;
+  }
+  .footer {
+    flex: 0 0 70px;
+    background-color: orange;
+  }
 `;
 
 export default Layout;

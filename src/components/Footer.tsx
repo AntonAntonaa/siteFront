@@ -9,6 +9,8 @@ const Footer = () => {
   );
 };
 
-const StyledWraper = styled.div``;
+const StyledWraper = styled.div`
+background-color: orange;
+`;
 
 export default Footer;
