@@ -16,20 +16,33 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <RequireAuth>
-            <Route path="profile" element={<Profile />} />
-          </RequireAuth>
-          <RequireAuth>
-            <Route path="product/:new" element={<Creatproduct />} />
-          </RequireAuth>
+          <Route path="/login" element={<Login />} />
           <Route path="product" element={<Product />} />
           <Route path="product/:id" element={<SinglePage />} />
-          <RequireAuth>
-            <Route path="product/:id/edit" element={<Editproduct />} />
-          </RequireAuth>
-          <RequireAuth>
-            <Route path="/login" element={<Login />} />
-          </RequireAuth>
+          {/* <Route
+            path="/protected"
+            element={
+              <RequireAuth>
+                <Editproduct />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/protected"
+            element={
+              <RequireAuth>
+                <Creatproduct />
+              </RequireAuth>
+            }
+          /> */}
+          <Route
+            path="/profile"
+            element={
+              <RequireAuth>
+                <Profile />
+              </RequireAuth>
+            }
+          />
         </Route>
       </Routes>
     </AuthProvider>

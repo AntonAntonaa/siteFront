@@ -1,16 +1,16 @@
 import useAuth from "./UseAuth";
 import { useNavigate } from "react-router-dom";
 
-function AuthStatus() {
+const AuthStatus = () => {
   let auth = useAuth();
   let navigate = useNavigate();
 
   if (!auth.user) {
-    return <p>You are not logged in.</p>;
+    return <h1>You are not logged in.</h1>;
   }
 
   return (
-    <p>
+    <h1>
       Welcome {auth.user}!{" "}
       <button
         onClick={() => {
@@ -19,7 +19,7 @@ function AuthStatus() {
       >
         Sign out
       </button>
-    </p>
+    </h1>
   );
 }
 

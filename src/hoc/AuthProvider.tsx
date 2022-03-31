@@ -3,7 +3,7 @@ import React from "react";
 import AuthContextType from "../Type/user";
 import fakeAuthProvider from "../Type/auth";
 
-const AuthContext = React.createContext<AuthContextType>(null!);
+const AuthContext = React.createContext<AuthContextType | null>(null);
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = React.useState<any>(null);
