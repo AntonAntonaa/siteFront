@@ -7,22 +7,32 @@ import SinglePage from "./pages/ProductPage/Singlproduct";
 import Creatproduct from "./pages/ProductPage/Creatprodukt";
 import Editproduct from "./pages/ProductPage/Editproduct";
 import Login from "./pages/ProfilePage/Login";
+import AuthProvider from "./hoc/AuthProvider";
+import RequireAuth from "./hoc/RecuireAuth";
 
 function App() {
   return (
-    <>
+    <AuthProvider>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="profile" element={<Profile />} />
+          <RequireAuth>
+            <Route path="profile" element={<Profile />} />
+          </RequireAuth>
+          <RequireAuth>
+            <Route path="product/:new" element={<Creatproduct />} />
+          </RequireAuth>
           <Route path="product" element={<Product />} />
           <Route path="product/:id" element={<SinglePage />} />
-          <Route path="product/:new" element={<Creatproduct />} />
-          <Route path="product/:id/edit" element={<Editproduct />} />
-          <Route path="login" element={<Login />}/>
+          <RequireAuth>
+            <Route path="product/:id/edit" element={<Editproduct />} />
+          </RequireAuth>
+          <RequireAuth>
+            <Route path="/login" element={<Login />} />
+          </RequireAuth>
         </Route>
       </Routes>
-    </>
+    </AuthProvider>
   );
 }
 
