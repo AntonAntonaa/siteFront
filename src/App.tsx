@@ -1,11 +1,12 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Profile from "./pages/Profile";
-import Product from "./pages/Product";
+import Profile from "./pages/ProfilePage/Profile";
+import Product from "./pages/ProductPage/Product";
 import Layout from "./components/Layout";
-import SinglePage from "./pages/Singlproduct";
-import Creatproduct from "./pages/Creatprodukt";
-import Editproduct from "./pages/Editproduct";
+import SinglePage from "./pages/ProductPage/Singlproduct";
+import Creatproduct from "./pages/ProductPage/Creatprodukt";
+import Editproduct from "./pages/ProductPage/Editproduct";
+import Login from "./pages/ProfilePage/Login";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="product/:id" element={<SinglePage />} />
           <Route path="product/:new" element={<Creatproduct />} />
           <Route path="product/:id/edit" element={<Editproduct />} />
+          <Route path="login" element={<Login />}/>
         </Route>
       </Routes>
     </>
