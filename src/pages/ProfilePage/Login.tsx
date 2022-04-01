@@ -2,7 +2,6 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hoc/UseAuth";
 
-
 type LocationState = {
   from: {
     pathname: string;
@@ -11,7 +10,7 @@ type LocationState = {
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const {signin} = useAuth(); 
+  const { signin } = useAuth();
 
   const locationState = location.state as LocationState;
   const fromPage = locationState?.from?.pathname || "/";
@@ -20,11 +19,8 @@ const Login = () => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const username = formData.get("username") as string;
-    signin(username)
-      navigate(fromPage, { replace: true });
-
-    // signin(username, () => {
-    // });
+    signin(username);
+    navigate(fromPage, { replace: true });
   };
 
   return (

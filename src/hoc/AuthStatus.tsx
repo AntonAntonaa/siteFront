@@ -1,5 +1,5 @@
 import useAuth from "./UseAuth";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // const AuthStatus = () => {
 //   const auth = useAuth();
@@ -23,4 +23,4 @@ import useAuth from "./UseAuth";
 //   );
 // }
 
-// export default AuthStatus;// 
+// export default AuthStatus;

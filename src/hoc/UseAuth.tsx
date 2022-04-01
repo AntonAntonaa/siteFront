@@ -1,6 +1,6 @@
 import React from "react";
 
-import AuthContextType from "../Type/user";
+import AuthContextType from "../Type/AuthContextType";
 
 export const AuthContext = React.createContext<AuthContextType>({
   signin: () => {},

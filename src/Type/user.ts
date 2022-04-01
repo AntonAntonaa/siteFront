@@ -1,17 +1,11 @@
-
-
-// export interface User {
-//   id: number,
-//   userName: string,
-// }
-
-
-
-interface AuthContextType {
-  user: any;
-  signin: (user: string) => void;
-  signout: () => void;
+export interface User {
+  id: number,
+  login: string,
+  password: string,
+  email: string,
+  dob: number
 }
 
-export default AuthContextType;
+
+
 
