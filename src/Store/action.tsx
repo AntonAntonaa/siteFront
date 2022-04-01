@@ -1,12 +1,9 @@
-export function addNewUser (user.id) {
-    return {
-        type: "ADD_USER",
-        
-    }
-}
 
-export function putUser (user.id) {
+
+export function LoginRedux (login:string) {
     return {
-        type: "Put_User"
+        type: "LOGIN",
+        login
+
     }
 }
