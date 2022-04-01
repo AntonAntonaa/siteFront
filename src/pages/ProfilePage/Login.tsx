@@ -11,29 +11,30 @@ type LocationState = {
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const auth = useAuth();
+  const {signin} = useAuth(); 
+
   const locationState = location.state as LocationState;
   const fromPage = locationState?.from?.pathname || "/";
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     const formData = new FormData(event.currentTarget);
     const username = formData.get("username") as string;
-
-    auth.signin(username, () => {
+    signin(username)
       navigate(fromPage, { replace: true });
-    });
+
+    // signin(username, () => {
+    // });
   };
 
   return (
     <div>
-      <p>You must log in to view the page at {fromPage}</p>
+      <p>Login {fromPage}</p>
 
       <form onSubmit={handleSubmit}>
         <label>
           Username: <input name="username" type="text" />
-        </label>{" "}
+        </label>
         <button type="submit">Login</button>
       </form>
     </div>

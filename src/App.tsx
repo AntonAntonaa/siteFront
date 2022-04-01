@@ -17,8 +17,8 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="product" element={<Product />} />
-          <Route path="product/:id" element={<SinglePage />} />
+          <Route path="/product" element={<Product />} />
+          <Route path="/product/:id" element={<SinglePage />} />
           {/* <Route
             path="/protected"
             element={

@@ -1,9 +1,6 @@
-
-
-export function LoginRedux (login:string) {
-    return {
-        type: "LOGIN",
-        login
-
-    }
+export function LoginRedux(login: string) {
+  return {
+    type: "LOGIN",
+    login,
+  };
 }

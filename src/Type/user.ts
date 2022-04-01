@@ -1,9 +1,17 @@
 
 
+// export interface User {
+//   id: number,
+//   userName: string,
+// }
+
+import { useDispatch } from "react-redux";
+
 interface AuthContextType {
   user: any;
-  signin: (user: string, callback: VoidFunction) => void;
-  signout: (callback: VoidFunction) => void;
-  }
-  
-  export default AuthContextType;
+  signin: (user: string) => void;
+  signout: () => void;
+}
+
+export default AuthContextType;
+

@@ -1,25 +1,25 @@
 import { createContext, useState } from "react";
 import React from "react";
 import AuthContextType from "../Type/user";
-import fakeAuthProvider from "../Type/auth";
+import { AuthContext } from "./UseAuth";
 
-const AuthContext = React.createContext<AuthContextType | null>(null);
+
+// const AuthContext = React.createContext<AuthContextType | null>(null);
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = React.useState<any>(null);
 
-  const signin = (newUser: string, callback: VoidFunction) => {
-    return fakeAuthProvider.signin(() => {
-      setUser(newUser);
-      callback();
-    });
-  };
-  const signout = (callback: VoidFunction) => {
-    return fakeAuthProvider.signout(() => {
-      setUser(null);
-      callback();
-    });
-  };
+  const signin = (newUser: string) => {
+    setUser(newUser)
+    // callback()
+      
+    };
+  
+  const signout = () => {
+    setUser(null)
+    // callback()
+    };
+
 
   const value = { user, signin, signout };
 

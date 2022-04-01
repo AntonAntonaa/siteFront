@@ -1,15 +1,16 @@
 import React, { Children } from "react";
 import { useLocation, Navigate } from "react-router-dom";
+import useAuth from "./UseAuth";
 
-const RequireAuth = ({ children }: { children: JSX.Element }) => {
+const RequireAuth: React.FC = ({ children }) => {
   const location = useLocation();
-  const auth = false;
+  const {user} = useAuth();
 
-  if (!auth) {
-    return <Navigate to="/login" state={{ from: location }} />;
+  if (!user) {
+    return <Navigate to="/login" />;
   }
 
-  return children;
+  return <>{children}</>;
 };
 
 export default RequireAuth;
