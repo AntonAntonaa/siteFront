@@ -3,23 +3,16 @@ import React from "react";
 import AuthContextType from "../Type/user";
 import { AuthContext } from "./UseAuth";
 
-
-// const AuthContext = React.createContext<AuthContextType | null>(null);
-
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = React.useState<any>(null);
 
   const signin = (newUser: string) => {
-    setUser(newUser)
-    // callback()
-      
-    };
-  
-  const signout = () => {
-    setUser(null)
-    // callback()
-    };
+    setUser(newUser);
+  };
 
+  const signout = () => {
+    setUser(null);
+  };
 
   const value = { user, signin, signout };
 
