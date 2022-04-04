@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Footer from "./Footer";
 import Header from "../components/Header ";
-import NavBar from "../components/NavBar";
 import styled from "styled-components";
 
 const Layout = () => {
@@ -13,12 +12,7 @@ const Layout = () => {
           <Header />
         </header>
         <main className="main">
-          <aside className="navBar">
-            <NavBar navBarItems={navBarItems} />
-          </aside>
-          <article className="content">
-            <Outlet />
-          </article>
+          <Outlet />
         </main>
         <footer className="footer">
           <Footer />
@@ -41,12 +35,10 @@ const StyledWraper = styled.div`
     flex-direction: row;
     flex: 1 1 100%;
     min-height: calc(100vh - 150px - 70px);
-    
   }
   .navBar {
     flex: 0 0 20%;
     background-color: yellow;
-    
   }
   .content {
     flex: 0 0 80%;

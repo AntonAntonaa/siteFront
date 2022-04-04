@@ -1,42 +1,24 @@
-import { stat } from "fs";
+import { UserActions, UserActionType } from "../Type/user";
 
+export interface UserState {
+  token: string | null;
+}
 
-// export const initialState:UserState = {
-//   user: {
-    
-//   }
+const initalState: UserState = {
+  token: null,
+};
 
-//   export interface User {
-//     id: number,
-//     userName: string,
-//   }
-  
-//   export interface UserState {
-//    currentUser: User|null;
-//   }
-
-
-  
-
-//   export const Reducers = (state = initialState, action) => {
-//     switch (action.type) {
-//      case "LOGIN":
-
-//      return {
-//       ...state, login: state.login
-//      }
-
-
-
-
-//       case "REGISTER"
-
-//     }
-//   }
-
-
-
-
-
-
-
+export const Reducers = (
+  state: UserState = initalState,
+  action: UserActionType
+) => {
+  switch (action.type) {
+    case UserActions.SET_TOKEN_ACTION:
+      return {
+        ...state,
+        token: action.token,
+      };
+    default:
+      return state;
+  }
+};

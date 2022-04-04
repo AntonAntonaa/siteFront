@@ -1,17 +1,19 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Profile from "./pages/ProfilePage/Profile";
-import Product from "./pages/ProductPage/Product";
+import Profile from "./pages/Profile";
+import Product from "./pages/Product";
 import Layout from "./components/Layout";
-import SinglePage from "./pages/ProductPage/Singlproduct";
-import Creatproduct from "./pages/ProductPage/Creatprodukt";
-import Editproduct from "./pages/ProductPage/Editproduct";
-import Login from "./pages/ProfilePage/Login";
+import SinglePage from "./components/Singlproduct";
+import Login from "./pages/Login";
 import AuthProvider from "./hoc/AuthProvider";
 import RequireAuth from "./hoc/RecuireAuth";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
+import Register from './pages/Register';
 
 function App() {
   return (
+    <Provider store={store}>
     <AuthProvider>
       <Routes>
         <Route path="/" element={<Layout />}>
@@ -19,6 +21,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/product" element={<Product />} />
           <Route path="/product/:id" element={<SinglePage />} />
+          <Route path="/registration" element={<Register />} />
           {/* <Route
             path="/protected"
             element={
@@ -46,6 +49,7 @@ function App() {
         </Route>
       </Routes>
     </AuthProvider>
+    </Provider>
   );
 }
 

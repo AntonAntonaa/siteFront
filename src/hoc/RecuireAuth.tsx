@@ -1,12 +1,13 @@
 import React, { Children } from "react";
 import { useLocation, Navigate } from "react-router-dom";
-import useAuth from "./UseAuth";
+import { useSelector } from 'react-redux';
+import { getUserToken } from "../store/selector";
 
 const RequireAuth: React.FC = ({ children }) => {
   const location = useLocation();
-  const {user} = useAuth();
+  const userToken = useSelector(getUserToken);
 
-  if (!user) {
+  if (!userToken) {
     return <Navigate to="/login" />;
   }
 

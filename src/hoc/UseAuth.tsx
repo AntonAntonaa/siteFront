@@ -5,7 +5,7 @@ import AuthContextType from "../Type/AuthContextType";
 export const AuthContext = React.createContext<AuthContextType>({
   signin: () => {},
   signout: () => {},
-  user: null
+  register: () => {}
 });
 
 const useAuth = () => {

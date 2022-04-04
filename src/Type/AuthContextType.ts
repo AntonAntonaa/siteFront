@@ -1,8 +1,7 @@
 interface AuthContextType {
-    user: any;
-   
-    signin: (user: string) => void;
-    signout: () => void;
-  }
-  
-  export default AuthContextType;
+  signin: (userName: string, password: string) => void;
+  signout: () => void;
+  register: (userName: string, password: string, email: string, dob: number) => void;
+}
+
+export default AuthContextType;

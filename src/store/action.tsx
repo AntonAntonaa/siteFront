@@ -1,14 +1,20 @@
-export function LoginRedux(id: number, login: string, password: string) {
+import { SetTokenAction } from "./../Type/user";
+import { UserActions } from "../Type/user";
+
+export function setTokenRedux(token: string | null): SetTokenAction {
   return {
-    type: "LOGIN",
-    id,
-    login,
-    password,
+    type: UserActions.SET_TOKEN_ACTION,
+    token,
+  };
+}
+
+export function LogOutRedux() {
+  return {
+    type: "LOGOUT",
   };
 }
 
 export function RegisterRedux(
-  id: number,
   login: string,
   password: string,
   email: string,
@@ -16,7 +22,6 @@ export function RegisterRedux(
 ) {
   return {
     type: "REGISTER",
-    id,
     login,
     password,
     email,

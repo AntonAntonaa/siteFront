@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import useAuth from "../../hoc/UseAuth";
+import useAuth from "../hoc/UseAuth";
 
 type LocationState = {
   from: {
@@ -19,7 +19,8 @@ const Login = () => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const username = formData.get("username") as string;
-    signin(username);
+    const password = formData.get("password") as string;
+    signin(username, password);
     navigate(fromPage, { replace: true });
   };
 
@@ -30,6 +31,10 @@ const Login = () => {
       <form onSubmit={handleSubmit}>
         <label>
           Username: <input name="username" type="text" />
+        </label>
+        
+        <label>
+          Password: <input name="password" type="password" />
         </label>
         <button type="submit">Login</button>
       </form>
