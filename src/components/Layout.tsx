@@ -8,46 +8,19 @@ const Layout = () => {
   return (
     <>
       <StyledWraper>
-        <header className="header">
-          <Header />
-        </header>
-        <main className="main">
-          <Outlet />
-        </main>
-        <footer className="footer">
-          <Footer />
-        </footer>
+        <Header />
+        <Outlet />
+        <Footer />
       </StyledWraper>
     </>
   );
 };
 
 const StyledWraper = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  .header {
-    flex: 0 0 150px;
-    background-color: aqua;
-  }
-  .main {
-    display: flex;
-    flex-direction: row;
-    flex: 1 1 100%;
-    min-height: calc(100vh - 150px - 70px);
-  }
-  .navBar {
-    flex: 0 0 20%;
-    background-color: yellow;
-  }
-  .content {
-    flex: 0 0 80%;
-    background-color: gray;
-  }
-  .footer {
-    flex: 0 0 70px;
-    background-color: orange;
-  }
-`;
+  width: 1200;
+  margin: 0 auto;
+  
+  
+`
 
 export default Layout;

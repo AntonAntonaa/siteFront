@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Footer = () => {
   return (
     <StyledWraper>
-      <h1></h1>
+      <h1>nhfnfhfn</h1>
     </StyledWraper>
   );
 };
