@@ -2,11 +2,12 @@ import { Outlet } from "react-router-dom";
 import Footer from "./Footer";
 import Header from "../components/Header ";
 import styled from "styled-components";
+import GlobalStyle from "../globalStyles";
 
 const Layout = () => {
-  const navBarItems = ["book1", "book2"];
   return (
     <>
+      <GlobalStyle />
       <StyledWraper>
         <Header />
         <Outlet />
@@ -17,10 +18,7 @@ const Layout = () => {
 };
 
 const StyledWraper = styled.div`
-  width: 1200;
-  margin: 0 auto;
-  
-  
-`
+
+`;
 
 export default Layout;

@@ -13,15 +13,13 @@ const Header = () => {
     <StyledWraper>
       <div className="logo">
         <Link to="/" className="logo">
-          <MyLogo />
+          <MyLogo className="logobook" />
         </Link>
       </div>
       <div className="catalog">Catalog</div>
       <div className="search">
-        <div className="vector">
-          <Vector />
-        </div>
-        <input type="text" className="input" placeholder="Search"></input>
+        <Vector className="vector" />
+        <input type="text" className="input" placeholder="Search" />
       </div>
       <button className="button_log">Log In/ Sing Up</button>
     </StyledWraper>
@@ -32,42 +30,38 @@ const StyledWraper = styled.div`
   display: flex;
   flex-direction: row;
   flex: 0 0 64px;
-  width: 1280;
-  flex-wrap: wrap;
-  align-items: center;
+  width: 100%;
   justify-content: space-between;
-  font-family: "Poppins", sans-serif;
+  padding-top: 24px;
+  padding-bottom: 40px;
   margin: auto;
 
-  .logo {
-    display: flex;
+  .logo .logobook {
     height: 46px;
+    width: 88px;
   }
 
   .catalog {
     display: flex;
     flex-wrap: wrap;
-    font-family: "Poppins";
+    align-items: center;
   }
 
   .vector {
-    background: #f0f4ef;
-    border-top-left-radius: 16px;
-    border-bottom-left-radius: 16px;
   }
 
   .search {
     display: flex;
     height: 64px;
-    width: 630px;
+    background-color: #f0f4ef;
+    border-radius: 16px;
   }
 
   .input {
-    background: #f0f4ef;
-    border-top-right-radius: 16px;
-    border-bottom-right-radius: 16px;
-    border: 0px;
+    background-color: transparent;
+    border: 1px solid;
   }
+  
   .button_log {
     display: flex;
     flex-direction: column;
@@ -76,6 +70,11 @@ const StyledWraper = styled.div`
     padding: 10px 50px;
     background: #344966;
     border-radius: 16px;
+    font-size: 16px;
+    line-height: 24px;
+    width: 230px;
+    height: 44px;
+    color:#F0F4EF;
   }
 `;
 
