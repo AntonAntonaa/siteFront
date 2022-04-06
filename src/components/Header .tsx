@@ -39,15 +39,20 @@ const StyledWraper = styled.div`
   .logo .logobook {
     height: 46px;
     width: 88px;
+    cursor: pointer;
   }
 
   .catalog {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    margin-left: 128px;
   }
 
   .vector {
+    margin: auto;
+    width: 64px;
+  
   }
 
   .search {
@@ -55,11 +60,16 @@ const StyledWraper = styled.div`
     height: 64px;
     background-color: #f0f4ef;
     border-radius: 16px;
+    cursor: pointer;
+    margin-left: 43px;
+    
   }
 
   .input {
     background-color: transparent;
-    border: 1px solid;
+    width: 566px;
+    border: 0px
+    
   }
   
   .button_log {
@@ -75,7 +85,11 @@ const StyledWraper = styled.div`
     width: 230px;
     height: 44px;
     color:#F0F4EF;
-  }
+    cursor: pointer;
+    margin: auto;
+    margin-left: 98px;
+    margin-right: 0px;
+      }
 `;
 
 export default Header;
