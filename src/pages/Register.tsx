@@ -1,7 +1,9 @@
 import { type } from "os";
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import useAuth from "../hoc/UseAuth";
+import { ReactComponent as Human } from "../assets/human_1.svg";
 
 type LocationState = {
   from: {
@@ -48,26 +50,59 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <p>Login {fromPage}</p>
+    <StyledWraper>
+      <div className="colum">
+        <div className="login">
+          <h1 className="header">Sign Up</h1>
+        </div>
 
-      <form onSubmit={handleSubmit}>
-        <label>
-          Username: <input name="username" type="text" required />
-        </label>
-        <label>
-          Email: <input name="email" type="text" required />
-        </label>
-        <label>
-          DOB: <input name="dob" type="number" required />
-        </label>
-        <label>
-          Password: <input name="password" type="password" required />
-        </label>
-        <button type="submit">Regi</button>
-      </form>
-    </div>
+        <form onSubmit={handleSubmit}>
+          <div className="email">
+            <div className="envelope"></div>
+            <label>
+              <input className="login" type="text" />
+            </label>
+          </div>
+
+          <div className="enter your email">Enter your email</div>
+
+          <div className="password">
+            <div className="sauron"></div>
+            <label>
+              <input className="passwrord" type="password" />
+            </label>
+          </div>
+
+          <div className="Enter your password">Enter your password</div>
+
+          <div className="password">
+            <div className="sauron"></div>
+            <label>
+              <input className="passwrord" type="password" />
+            </label>
+          </div>
+          <div className="Enter your password">
+            Repeat your password without errors
+          </div>
+
+          <button type="submit" className="button_log">
+          Sing Up
+          </button>
+        </form>
+      </div>
+      <Human className="human" />
+    </StyledWraper>
   );
 };
+
+const StyledWraper = styled.div`
+display: flex;
+  flex-direction: row;
+  padding-top: 80px;
+  padding-bottom: 80px;
+
+  
+
+`;
 
 export default Register;

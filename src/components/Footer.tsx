@@ -34,7 +34,7 @@ const StyledWraper = styled.div`
   flex: 0 0 340px;
   background-color: #0d1821;
   height: 340px;
-  margin-top: 150px;
+
 
   .colum {
     display: flex;

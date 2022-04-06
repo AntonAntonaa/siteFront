@@ -33,7 +33,7 @@ const StyledWraper = styled.div`
   width: 100%;
   justify-content: space-between;
   padding-top: 24px;
-  padding-bottom: 40px;
+  
   margin: auto;
 
   .logo .logobook {
