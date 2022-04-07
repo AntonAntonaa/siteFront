@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import useAuth from "../hoc/UseAuth";
 import { ReactComponent as Human } from "../assets/human_1.svg";
+import { ReactComponent as Map } from "../assets/map.svg";
 
 type LocationState = {
   from: {
     pathname: string;
   };
 };
+
 const Login = () => {
+  const [login, setLogin] = useState({ email: "", password: "" });
   const navigate = useNavigate();
   const location = useLocation();
   const { signin } = useAuth();
@@ -24,20 +27,33 @@ const Login = () => {
     const password = formData.get("password") as string;
     signin(email, password);
     navigate(fromPage, { replace: true });
+
+    if (login.email == login.email && login.password == login.password) {
+      console.log("da");
+    } else {
+      console.log("net");
+    }
   };
-  // {fromPage} должна быть у логина
+
   return (
     <StyledWraper>
       <div className="colum">
         <div className="login">
-          <h1 className="header">Log In </h1>
+          <h1 className="header">Log In {fromPage}</h1>
         </div>
 
         <form onSubmit={handleSubmit}>
           <div className="email">
             <div className="envelope"></div>
             <label>
-              <input className="login" type="text" />
+              <input
+                className="email"
+                type="text"
+                onChange={(event) =>
+                  setLogin({ ...login, email: event.target.value })
+                }
+                value={login.email}
+              />
             </label>
           </div>
 
@@ -46,7 +62,14 @@ const Login = () => {
           <div className="password">
             <div className="sauron"></div>
             <label>
-              <input className="passwrord" type="password" />
+              <input
+                className="passwrord"
+                type="password"
+                onChange={(event) =>
+                  setLogin({ ...login, password: event.target.value })
+                }
+                value={login.password}
+              />
             </label>
           </div>
 
@@ -75,6 +98,7 @@ const StyledWraper = styled.div`
   .login {
   }
   .header {
+    width: 70px;
   }
   .human {
     padding-left: 146px;
