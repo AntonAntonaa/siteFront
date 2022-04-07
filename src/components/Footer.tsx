@@ -29,12 +29,11 @@ const Footer = () => {
 };
 
 const StyledWraper = styled.div`
+  background-color: #0d1821;
   display: flex;
   flex-direction: row;
   flex: 0 0 340px;
-  background-color: #0d1821;
   height: 340px;
-
 
   .colum {
     display: flex;

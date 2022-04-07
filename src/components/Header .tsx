@@ -32,9 +32,8 @@ const StyledWraper = styled.div`
   flex: 0 0 64px;
   width: 100%;
   justify-content: space-between;
-  padding-top: 24px;
-  
   margin: auto;
+  z-index: 3;
 
   .logo .logobook {
     height: 46px;
@@ -68,7 +67,11 @@ const StyledWraper = styled.div`
   .input {
     background-color: transparent;
     width: 566px;
-    border: 0px
+    border: 0px;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 28px;
+    color: #0d1821;
     
   }
   

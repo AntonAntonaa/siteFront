@@ -9,8 +9,12 @@ const Layout = () => {
     <>
       <GlobalStyle />
       <StyledWraper>
+        <div className="header">
         <Header />
+        </div>
+        <div className="outlet">
         <Outlet />
+        </div>
         <Footer />
       </StyledWraper>
     </>
@@ -18,7 +22,12 @@ const Layout = () => {
 };
 
 const StyledWraper = styled.div`
+.header{
 
+}
+.outlet{
+ 
+}
 `;
 
 export default Layout;
