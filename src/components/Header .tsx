@@ -11,29 +11,33 @@ import { useSelector } from "react-redux";
 const Header = () => {
   return (
     <StyledWraper>
-      <div className="logo">
-        <Link to="/" className="logo">
-          <MyLogo className="logobook" />
-        </Link>
+      <div className="container">
+        <div className="logo">
+          <Link to="/" className="logo">
+            <MyLogo className="logobook" />
+          </Link>
+        </div>
+        <div className="catalog">Catalog</div>
+        <div className="search">
+          <Vector className="vector" />
+          <input type="text" className="input" placeholder="Search" />
+        </div>
+        <button className="button_log">Log In/ Sing Up</button>
       </div>
-      <div className="catalog">Catalog</div>
-      <div className="search">
-        <Vector className="vector" />
-        <input type="text" className="input" placeholder="Search" />
-      </div>
-      <button className="button_log">Log In/ Sing Up</button>
     </StyledWraper>
   );
 };
 
 const StyledWraper = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex: 0 0 64px;
-  width: 100%;
-  justify-content: space-between;
-  margin: auto;
-  z-index: 3;
+  .container {
+    display: flex;
+    flex-direction: row;
+    flex: 0 0 64px;
+    width: 100%;
+    justify-content: space-between;
+    margin: auto;
+    z-index: 3;
+  }
 
   .logo .logobook {
     height: 46px;
@@ -46,12 +50,12 @@ const StyledWraper = styled.div`
     flex-wrap: wrap;
     align-items: center;
     margin-left: 128px;
+    font-size: 24px;
   }
 
   .vector {
     margin: auto;
     width: 64px;
-  
   }
 
   .search {
@@ -61,7 +65,6 @@ const StyledWraper = styled.div`
     border-radius: 16px;
     cursor: pointer;
     margin-left: 43px;
-    
   }
 
   .input {
@@ -72,9 +75,8 @@ const StyledWraper = styled.div`
     font-size: 28px;
     line-height: 28px;
     color: #0d1821;
-    
   }
-  
+
   .button_log {
     display: flex;
     flex-direction: column;
@@ -87,12 +89,12 @@ const StyledWraper = styled.div`
     line-height: 24px;
     width: 230px;
     height: 44px;
-    color:#F0F4EF;
+    color: #f0f4ef;
     cursor: pointer;
     margin: auto;
     margin-left: 98px;
     margin-right: 0px;
-      }
+  }
 `;
 
 export default Header;

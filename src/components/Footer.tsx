@@ -8,6 +8,7 @@ import { ReactComponent as Map } from "../assets/map.svg";
 const Footer = () => {
   return (
     <StyledWraper>
+      <div className="container">
       <div className="colum">
         <div className="colum_1">
           <Link to="/" className="logo">
@@ -24,16 +25,22 @@ const Footer = () => {
           <Map className="map" />
         </div>
       </div>
+      </div>
     </StyledWraper>
   );
 };
 
 const StyledWraper = styled.div`
-  background-color: #0d1821;
+
+background-color: #0d1821;
+  .container{ 
+ 
   display: flex;
   flex-direction: row;
   flex: 0 0 340px;
   height: 340px;
+
+  }
 
   .colum {
     display: flex;

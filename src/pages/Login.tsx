@@ -5,6 +5,7 @@ import useAuth from "../hoc/UseAuth";
 import { ReactComponent as Human } from "../assets/human_1.svg";
 import { ReactComponent as Mail } from "../assets/Mail.svg";
 import { ReactComponent as Hide } from "../assets/Hide.svg";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 type LocationState = {
   from: {
@@ -12,47 +13,42 @@ type LocationState = {
   };
 };
 
+interface LoginForm {
+  email: string;
+  password: string;
+}
+
 const Login = () => {
-  const [login, setLogin] = useState({ email: "", password: "" });
   const navigate = useNavigate();
   const location = useLocation();
   const { signin } = useAuth();
+  const { handleSubmit, register } = useForm();
 
   const locationState = location.state as LocationState;
   const fromPage = locationState?.from?.pathname || "/";
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const email = formData.get("email") as string;
-    const password = formData.get("password") as string;
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    const formdata = data as LoginForm;
+    const email = formdata.email as string;
+    const password = formdata.password as string;
     signin(email, password);
     navigate(fromPage, { replace: true });
-
-    if (login.email == login.email && login.password == login.password) {
-      console.log("da");
-    } else {
-      console.log("net");
-    }
   };
-  //{fromPage}
+
   return (
     <StyledWraper>
       <div className="colum">
-        <h1 className="login">Log In </h1>
+        <h1 className="login">Log In</h1>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="email">
             <Mail className="mail" />
             <label>
               <input
+                {...register("email", { required: true })}
                 className="input1"
                 type="text"
                 placeholder="Email"
-                onChange={(event) =>
-                  setLogin({ ...login, email: event.target.value })
-                }
-                value={login.email}
               />
             </label>
           </div>
@@ -63,12 +59,9 @@ const Login = () => {
             <Hide className="sauron" />
             <label>
               <input
+                {...register("password", { required: true })}
                 className="input2"
                 type="password"
-                onChange={(event) =>
-                  setLogin({ ...login, password: event.target.value })
-                }
-                value={login.password}
               />
             </label>
           </div>
@@ -98,7 +91,6 @@ const StyledWraper = styled.div`
   }
 
   .login {
-    
     color: #0d1821;
     font-size: 40px;
     line-height: 60px;

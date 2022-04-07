@@ -12,7 +12,7 @@ const Layout = () => {
         <div className="header">
         <Header />
         </div>
-        <div className="outlet">
+        <div className="container">
         <Outlet />
         </div>
         <Footer />
@@ -23,11 +23,10 @@ const Layout = () => {
 
 const StyledWraper = styled.div`
 .header{
+  margin-top: 24px ;
 
 }
-.outlet{
- 
-}
+
 `;
 
 export default Layout;
