@@ -1,4 +1,4 @@
-import { type } from "os";
+
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -6,16 +6,25 @@ import useAuth from "../hoc/UseAuth";
 import { ReactComponent as Human } from "../assets/human_1.svg";
 import { ReactComponent as Mail } from "../assets/Mail.svg";
 import { ReactComponent as Hide } from "../assets/Hide.svg";
+import { useForm } from "react-hook-form";
 
 type LocationState = {
   from: {
     pathname: string;
   };
 };
+
+interface RegisterForm {
+  email: string;
+  password: string;
+}
+
 const Register = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { register } = useAuth();
+  // const { handleSubmit, register } = useForm()
+
 
   const locationState = location.state as LocationState;
   const fromPage = locationState?.from?.pathname || "/";

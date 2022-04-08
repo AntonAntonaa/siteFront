@@ -22,6 +22,7 @@ function App() {
           <Route path="/product" element={<Product />} />
           <Route path="/product/:id" element={<SinglePage />} />
           <Route path="/registration" element={<Register />} />
+          {/* <Route path="/profile" element={<Profile />} /> */}
           {/* <Route
             path="/protected"
             element={

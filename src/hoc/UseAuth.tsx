@@ -1,15 +1,15 @@
 import React from "react";
 
-import AuthContextType from "../Type/AuthContextType";
 
-export const AuthContext = React.createContext<AuthContextType>({
+
+export const AuthContext = ({
   signin: () => {},
   signout: () => {},
   register: () => {}
 });
 
 const useAuth = () => {
-  return React.useContext(AuthContext);
+  return ;
 };
 
 export default useAuth;

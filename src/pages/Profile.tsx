@@ -1,10 +1,18 @@
+import styled from "styled-components";
 
 const Profile = () => {
   return (
-    <div>
-      profile
-    </div>
+    <StyledWraper>
+      <div className="container">
+        
+      </div>
+
+    </StyledWraper>
   );
 };
+
+const StyledWraper = styled.div`
+  
+`
 
 export default Profile;

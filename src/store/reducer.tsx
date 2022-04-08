@@ -1,6 +1,8 @@
 import { UserActions, UserActionType } from "../Type/user";
 
 export interface UserState {
+  userName: string;
+  email: string;
   token: string | null;
 }
 

@@ -32,6 +32,7 @@ const Login = () => {
     const email = formdata.email as string;
     const password = formdata.password as string;
     signin(email, password);
+    console.log('From', fromPage)
     navigate(fromPage, { replace: true });
   };
 
