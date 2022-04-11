@@ -20,10 +20,7 @@ const NavBar: React.FC<Props> = (props) => {
 };
 
 const StyledWraper = styled.div`
-
   .navigation {
-    
-
     &__title {
       color: tomato;
     }

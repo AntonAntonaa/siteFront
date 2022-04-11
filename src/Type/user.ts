@@ -12,7 +12,7 @@ export enum UserActions {
 
 export interface SetTokenAction {
   type: UserActions.SET_TOKEN_ACTION;
-  token:string|null
+  token: string | null
 }
 
 export type UserActionType = SetTokenAction

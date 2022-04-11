@@ -78,7 +78,7 @@ const StyledWraper = styled.div`
     bottom: 0px;
     right: 54px;
     width: 406px;
-   height: 400px;
+    height: 400px;
     margin-left: 102px;
   }
 `;

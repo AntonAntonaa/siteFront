@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <StyledWraper>
       <div className="baner">
-        <Baner  />
+        <Baner />
       </div>
     </StyledWraper>
   );

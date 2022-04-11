@@ -26,7 +26,7 @@ const Login = () => {
   const location = useLocation();
   const { handleSubmit, register } = useForm();
   const dispatch = useDispatch();
-  const axios = require('axios').default;
+  const axios = require("axios").default;
 
   const locationState = location.state as LocationState;
   const fromPage = locationState?.from?.pathname || "/";
@@ -44,8 +44,6 @@ const Login = () => {
     );
     navigate(fromPage, { replace: true });
   };
-
-  
 
   return (
     <StyledWraper>

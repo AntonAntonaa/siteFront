@@ -9,37 +9,34 @@ const Footer = () => {
   return (
     <StyledWraper>
       <div className="container">
-      <div className="colum">
-        <div className="colum_1">
-          <Link to="/" className="logo">
-            <MyLogoFoot className="logobook" />
-          </Link>
-          <div className="email">tranthuy.nute@gmail.com</div>
-          <div className="phone">(480) 555-0103</div>
+        <div className="colum">
+          <div className="colum_1">
+            <Link to="/" className="logo">
+              <MyLogoFoot className="logobook" />
+            </Link>
+            <div className="email">tranthuy.nute@gmail.com</div>
+            <div className="phone">(480) 555-0103</div>
+          </div>
+          <div className="colum_2">
+            <Bar />
+          </div>
+          <div className="colum_3">
+            <div className="nato">6391 Elgin St. Celina, Delaware 10299</div>
+            <Map className="map" />
+          </div>
         </div>
-        <div className="colum_2">
-          <Bar />
-        </div>
-        <div className="colum_3">
-          <div className="nato">6391 Elgin St. Celina, Delaware 10299</div>
-          <Map className="map" />
-        </div>
-      </div>
       </div>
     </StyledWraper>
   );
 };
 
 const StyledWraper = styled.div`
-
-background-color: #0d1821;
-  .container{ 
- 
-  display: flex;
-  flex-direction: row;
-  flex: 0 0 340px;
-  height: 340px;
-
+  background-color: #0d1821;
+  .container {
+    display: flex;
+    flex-direction: row;
+    flex: 0 0 340px;
+    height: 340px;
   }
 
   .colum {

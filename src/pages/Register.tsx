@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -24,7 +23,6 @@ const Register = () => {
   const location = useLocation();
 
   // const { handleSubmit, register } = useForm()
-
 
   const locationState = location.state as LocationState;
   const fromPage = locationState?.from?.pathname || "/";
@@ -55,7 +53,6 @@ const Register = () => {
       return;
     }
     console.log(dob);
-
 
     navigate(fromPage, { replace: true });
   };
@@ -125,7 +122,7 @@ const StyledWraper = styled.div`
 
   .header {
     font-size: 40px;
-line-height: 60px;
+    line-height: 60px;
     color: #0d1821;
     font-style: bold;
     font-weight: 700;
@@ -206,12 +203,11 @@ line-height: 60px;
     align-items: center;
     padding: 10px 50px;
     width: 166px;
-height: 44px;
+    height: 44px;
     background: #344966;
     border-radius: 16px;
     margin-top: 60px;
-    color: #F0F4EF
-;
+    color: #f0f4ef;
   }
 
   .human {

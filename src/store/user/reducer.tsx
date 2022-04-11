@@ -40,7 +40,10 @@ const initialState: UserState = {
   error: null,
 };
 
-export type UsersAction = LodingAction | LodingSuccersAction | LodingErrorAction;
+export type UsersAction =
+  | LodingAction
+  | LodingSuccersAction
+  | LodingErrorAction;
 
 export const userReducer = (
   state = initialState,
@@ -58,35 +61,3 @@ export const userReducer = (
       return state;
   }
 };
-
-// export const Redusers = (state = initialState, action) => {
-//   switch (
-//     action.type
-//   ){
-//     case "LOGIN":
-//       return {
-//         ...state
-//       }
-//   }
-// }
-
-// export interface UserState {
-//   userName: string | null;
-//   email: string | null;
-//   token: string | null;
-// }
-
-// export const Reducers = (
-//   state: UserState = initalState,
-//   action: UserActionType
-// ) => {
-//   switch (action.type) {
-//     case UserActions.SET_TOKEN_ACTION:
-//       return {
-//         ...state,
-//         token: action.token, userName:
-//       };
-//     default:
-//       return state;
-//   }
-// };
