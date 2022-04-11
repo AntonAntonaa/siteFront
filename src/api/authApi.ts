@@ -2,8 +2,8 @@ import axios from './axios';
 
 const path = '/auth';
 
-const signIn = (data) => {
-  return axios.post(`${path}/sign-in`, data);
+const signIn = (config: any) => {
+  return axios.post(`${path}/sign-in`, config);
 };
 
 export default {
