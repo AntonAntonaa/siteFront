@@ -22,7 +22,7 @@ interface RegisterForm {
 const Register = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { register } = useAuth();
+
   // const { handleSubmit, register } = useForm()
 
 
@@ -56,7 +56,7 @@ const Register = () => {
     }
     console.log(dob);
 
-    register(username, password, email, dob);
+
     navigate(fromPage, { replace: true });
   };
 

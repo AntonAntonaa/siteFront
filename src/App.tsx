@@ -5,7 +5,6 @@ import Product from "./pages/Product";
 import Layout from "./components/Layout";
 import SinglePage from "./components/Singlproduct";
 import Login from "./pages/Login";
-import AuthProvider from "./hoc/AuthProvider";
 import RequireAuth from "./hoc/RecuireAuth";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
@@ -14,7 +13,6 @@ import Register from './pages/Register';
 function App() {
   return (
     <Provider store={store}>
-    <AuthProvider>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
@@ -49,7 +47,6 @@ function App() {
           />
         </Route>
       </Routes>
-    </AuthProvider>
     </Provider>
   );
 }

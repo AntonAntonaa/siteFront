@@ -6,6 +6,9 @@ import { ReactComponent as Human } from "../assets/human_1.svg";
 import { ReactComponent as Mail } from "../assets/Mail.svg";
 import { ReactComponent as Hide } from "../assets/Hide.svg";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { loginSuccess, loginUser } from "../store/user/action";
+import axios from "axios";
 
 type LocationState = {
   from: {
@@ -21,18 +24,23 @@ interface LoginForm {
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { signin } = useAuth();
   const { handleSubmit, register } = useForm();
+  const dispatch = useDispatch();
 
   const locationState = location.state as LocationState;
   const fromPage = locationState?.from?.pathname || "/";
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const formdata = data as LoginForm;
     const email = formdata.email as string;
     const password = formdata.password as string;
-    signin(email, password);
-    console.log('From', fromPage)
+
+    await dispatch(
+      loginUser({
+        email,
+        password,
+      })
+    );
     navigate(fromPage, { replace: true });
   };
 
