@@ -43,11 +43,9 @@ const GlobalStyle = createGlobalStyle`
 
     
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
- body {
+
+body {
   font-family: 'Poppins', sans-serif;
-  /* padding-left: 80px ;
-  padding-right: 80px; */
-  
   margin: 0 auto;
  }
 

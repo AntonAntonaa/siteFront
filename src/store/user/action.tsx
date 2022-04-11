@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ThunkAction, ThunkDispatch } from "redux-thunk";
+import {  ThunkDispatch } from "redux-thunk";
 import { RootState } from "../store";
 import {
   LodingAction,

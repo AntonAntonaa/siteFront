@@ -22,7 +22,7 @@ const Header = () => {
           <Vector className="vector" />
           <input type="text" className="input" placeholder="Search" />
         </div>
-        <button className="button_log">Log In/ Sing Up</button>
+        <button className="button button-primary button_log">Log In/ Sing Up</button>
       </div>
     </StyledWraper>
   );
@@ -78,20 +78,7 @@ const StyledWraper = styled.div`
   }
 
   .button_log {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 50px;
-    background: #344966;
-    border-radius: 16px;
-    font-size: 16px;
-    line-height: 24px;
-    width: 230px;
-    height: 44px;
-    color: #f0f4ef;
-    cursor: pointer;
-    margin: auto;
+
     margin-left: 98px;
     margin-right: 0px;
   }

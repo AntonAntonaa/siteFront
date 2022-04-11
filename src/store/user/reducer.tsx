@@ -1,11 +1,9 @@
-import { UserActions, UserActionType } from "../../Type/user";
-import { createSlice, configureStore } from "@reduxjs/toolkit";
-
 export interface User {
   userName: string;
   email: string;
   id: number;
   avatar: string;
+  token: string
 }
 
 export interface UserState {
