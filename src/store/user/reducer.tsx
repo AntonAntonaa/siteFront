@@ -3,7 +3,7 @@ export interface User {
   email: string;
   id: number;
   avatar: string;
-  token: string
+
 }
 
 export interface UserState {

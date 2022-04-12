@@ -30,16 +30,9 @@ const Register = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-
-    const username = formData.get("username");
     const password = formData.get("password");
     const email = formData.get("email");
-    const dob = Number(formData.get("dob"));
 
-    if (typeof username != "string") {
-      return;
-    }
-    console.log(username);
     if (typeof password != "string") {
       return;
     }
@@ -48,11 +41,6 @@ const Register = () => {
       return;
     }
     console.log(email);
-    console.log(typeof dob);
-    if (typeof dob != "number") {
-      return;
-    }
-    console.log(dob);
 
     navigate(fromPage, { replace: true });
   };
