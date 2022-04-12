@@ -1,9 +1,16 @@
+import { AxiosResponse } from 'axios';
+import { User } from '../store/user/reducer';
 import axios from './axios';
 
-const path = '/auth';
+const path = '/users/auth/login';
 
-const signIn = (config: any) => {
-  return axios.post(`${path}/sign-in`, config);
+interface Config {
+  email: string,
+  password: string
+}
+
+export const signIn = async (config: Config): Promise<AxiosResponse<User>> => {
+  return axios.post(`${path}`, { ...config, userName: config.email });
 };
 
 export default {

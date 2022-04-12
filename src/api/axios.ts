@@ -1,32 +1,29 @@
 import axios from "axios";
-import { store } from './../store/store';
-import jwt_decode from "jwt-decode";
-
-
 
 const axiosInstance = axios.create({
-  baseURL: "",
+  baseURL: "http://localhost:3002",
 });
 
-export const setToken = (token: string) => {
-  axiosInstance.defaults.headers.common.authorization = `Bearer ${"TOKEN"}`;
-}
-
-export  async ({
-method = "GET",
-
-})
-
-axios.interceptors.request.use((request) => {
-  if (store.getState().user.user == null) {
-
+axiosInstance.interceptors.request.use((request) => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    request.headers = {
+      ...request.headers,
+      Authorization: `Bearer ${token}`
+    }
   }
-
-    const token = store.getState().user.user?.token;
-  request.headers = { ...request.headers, Authorization: }
   return request;
 });
 
+axiosInstance.interceptors.response.use((resp) => {
+  console.log('DONE1', resp.data)
+  if (resp.data.token) {
+    console.log('DONE')
+    localStorage.setItem('token', resp.data.token)
+  }
+
+  return resp
+})
 
 
 export default axiosInstance;

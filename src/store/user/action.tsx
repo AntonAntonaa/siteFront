@@ -1,5 +1,5 @@
 import axios from "axios";
-import {  ThunkDispatch } from "redux-thunk";
+import { ThunkDispatch } from "redux-thunk";
 import { RootState } from "../store";
 import {
   LodingAction,
@@ -9,6 +9,7 @@ import {
   UserActionTypes,
   UsersAction,
 } from "./reducer";
+import { signIn } from "../../api/authApi";
 
 export const loginStart = (): LodingAction => {
   return {
@@ -41,15 +42,16 @@ export function loginUser(options: Options) {
   ) {
     try {
       dispatch(loginStart());
-      const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/users/1"
-      );
+      const resp = await signIn(options);
+      if (!resp.data.email) {
+        throw new Error("User not exist");
+      }
       dispatch(
         loginSuccess({
           avatar: "",
-          email: response.data.email,
-          id: response.data.id,
-          userName: response.data.username,
+          email: resp.data.email,
+          id: resp.data.id,
+          userName: resp.data.userName,
         })
       );
     } catch (err: any) {
