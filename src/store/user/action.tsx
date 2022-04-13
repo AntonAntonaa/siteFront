@@ -1,4 +1,3 @@
-import axios from "axios";
 import { ThunkDispatch } from "redux-thunk";
 import { RootState } from "../store";
 import {
@@ -14,7 +13,6 @@ import {
 } from "./reducer";
 import { registerIn, signIn } from "../../api/authApi";
 
-
 export const registerStart = (): RegisterAction => {
   return {
     type: UserActionTypes.REGISTER,
@@ -27,17 +25,25 @@ export const loginStart = (): LodingAction => {
   };
 };
 
-export const registerSuccess = (user: User): RegisterSuccersAction => {
+export const registerSuccess = (
+  user: User,
+  token: string
+): RegisterSuccersAction => {
   return {
     type: UserActionTypes.REGISTER_SUCCERS,
     payload: user,
+    token,
   };
 };
 
-export const loginSuccess = (user: User): LodingSuccersAction => {
+export const loginSuccess = (
+  user: User,
+  token: string
+): LodingSuccersAction => {
   return {
     type: UserActionTypes.LOGIN_SUCCERS,
     payload: user,
+    token,
   };
 };
 
@@ -67,14 +73,7 @@ export function loginUser(options: Options) {
     try {
       dispatch(loginStart());
       const resp = await signIn(options);
-      dispatch(
-        loginSuccess({
-          avatar: "",
-          email: resp.data.email,
-          id: resp.data.id,
-          userName: resp.data.userName,
-        })
-      );
+      dispatch(loginSuccess(resp.data.user, resp.data.token));
     } catch (err: any) {
       dispatch(loginError(err.message));
     }
@@ -88,14 +87,7 @@ export function registerUser(options: Options) {
     try {
       dispatch(registerStart());
       const resp = await registerIn(options);
-      dispatch(
-        registerSuccess({
-          avatar: "",
-          email: resp.data.email,
-          id: resp.data.id,
-          userName: resp.data.userName,
-        })
-      );
+      dispatch(loginSuccess(resp.data.user, resp.data.token));
     } catch (err: any) {
       dispatch(registerError(err.message));
     }

@@ -15,15 +15,15 @@ axiosInstance.interceptors.request.use((request) => {
   return request;
 });
 
-axiosInstance.interceptors.response.use((resp) => {
-  console.log('DONE1', resp.data)
-  if (resp.data.token) {
-    console.log('DONE')
-    localStorage.setItem('token', resp.data.token)
-  }
+// axiosInstance.interceptors.response.use((resp) => {
+//   console.log('DONE1', resp.data)
+//   if (resp.data.token) {
+//     console.log('DONE')
+//     localStorage.setItem('token', resp.data.token)
+//   }
 
-  return resp
-})
+//   return resp
+// })
 
 
 export default axiosInstance;

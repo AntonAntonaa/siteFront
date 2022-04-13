@@ -9,6 +9,7 @@ export interface UserState {
   user: null | User;
   loading: boolean;
   error: null | string;
+  token: null | string;
 }
 
 export enum UserActionTypes {
@@ -31,11 +32,13 @@ export interface LodingAction {
 export interface RegisterSuccersAction {
   type: UserActionTypes.REGISTER_SUCCERS;
   payload: User;
+  token: string;
 }
 
 export interface LodingSuccersAction {
   type: UserActionTypes.LOGIN_SUCCERS;
   payload: User;
+  token: string;
 }
 
 export interface RegisterErrorAction {
@@ -49,9 +52,10 @@ export interface LodingErrorAction {
 }
 
 const initialState: UserState = {
-  user: null,
+  user: JSON.parse(localStorage.getItem("USER") || "null"),
   loading: false,
   error: null,
+  token: localStorage.getItem("AUTHTOKEN"),
 };
 
 export type UsersAction =
@@ -68,18 +72,40 @@ export const userReducer = (
 ): UserState => {
   switch (action.type) {
     case UserActionTypes.LOGIN:
-      return { user: null, loading: true, error: null };
+      localStorage.removeItem("USER");
+      localStorage.removeItem("AUTHTOKEN");
+      return { user: null, loading: true, error: null, token: null };
     case UserActionTypes.LOGIN_SUCCERS:
-      return { user: action.payload, loading: false, error: null };
+      localStorage.setItem("USER", JSON.stringify(action.payload));
+      localStorage.setItem("AUTHTOKEN", action.token);
+      return {
+        user: action.payload,
+        loading: false,
+        error: null,
+        token: action.token,
+      };
     case UserActionTypes.LOGIN_ERROR:
-      return { user: null, loading: false, error: action.payload };
+      localStorage.removeItem("USER");
+      localStorage.removeItem("AUTHTOKEN");
+      return { user: null, loading: false, error: action.payload, token: null };
 
     case UserActionTypes.REGISTER:
-      return { user: null, loading: true, error: null };
+      localStorage.removeItem("USER");
+      localStorage.removeItem("AUTHTOKEN");
+      return { user: null, loading: true, error: null, token: null };
     case UserActionTypes.REGISTER_SUCCERS:
-      return { user: action.payload, loading: false, error: null };
+      localStorage.setItem("USER", JSON.stringify(action.payload));
+      localStorage.setItem("AUTHTOKEN", action.token);
+      return {
+        user: action.payload,
+        loading: false,
+        error: null,
+        token: action.token,
+      };
     case UserActionTypes.REGISTER_ERROR:
-      return { user: null, loading: false, error: action.payload };
+      localStorage.removeItem("USER");
+      localStorage.removeItem("AUTHTOKEN");
+      return { user: null, loading: false, error: action.payload, token: null };
 
     default:
       return state;
