@@ -67,9 +67,6 @@ export function loginUser(options: Options) {
     try {
       dispatch(loginStart());
       const resp = await signIn(options);
-      if (!resp.data.email) {
-        throw new Error("User not exist");
-      }
       dispatch(
         loginSuccess({
           avatar: "",
@@ -91,9 +88,6 @@ export function registerUser(options: Options) {
     try {
       dispatch(registerStart());
       const resp = await registerIn(options);
-      if (!resp.data.email) {
-        throw new Error("User not exist");
-      }
       dispatch(
         registerSuccess({
           avatar: "",
