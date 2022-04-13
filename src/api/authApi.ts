@@ -13,6 +13,11 @@ export const signIn = async (config: Config): Promise<AxiosResponse<User>> => {
   return axios.post(`${path}`, { ...config, userName: config.email });
 };
 
+export const registerIn =  async (config: Config): Promise<AxiosResponse<User>> => {
+  return axios.post(`/users`, { ...config, userName: config.email });
+};
+
 export default {
   signIn,
+  registerIn
 };

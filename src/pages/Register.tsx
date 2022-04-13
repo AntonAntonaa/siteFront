@@ -5,7 +5,9 @@ import useAuth from "../hoc/UseAuth";
 import { ReactComponent as Human } from "../assets/human_1.svg";
 import { ReactComponent as Mail } from "../assets/Mail.svg";
 import { ReactComponent as Hide } from "../assets/Hide.svg";
-import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { registerUser } from "../store/user/action";
 
 type LocationState = {
   from: {
@@ -21,17 +23,19 @@ interface RegisterForm {
 const Register = () => {
   const navigate = useNavigate();
   const location = useLocation();
-
-  // const { handleSubmit, register } = useForm()
+ const { handleSubmit, register } = useForm()
+ const dispatch = useDispatch();
 
   const locationState = location.state as LocationState;
   const fromPage = locationState?.from?.pathname || "/";
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const password = formData.get("password");
-    const email = formData.get("email");
+  const onSubmit: SubmitHandler<FieldValues>= async (data) => {
+  
+    const formData =  data as RegisterForm;
+    const email = formData.email as string;
+    const password = formData.password as string;
+
+  
 
     if (typeof password != "string") {
       return;
@@ -42,6 +46,12 @@ const Register = () => {
     }
     console.log(email);
 
+    await dispatch(
+      registerUser({
+        email,
+        password,
+      })
+    );
     navigate(fromPage, { replace: true });
   };
 
@@ -50,11 +60,13 @@ const Register = () => {
       <div className="colum">
         <h1 className="header">Sign Up</h1>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="email">
             <Mail className="mail" />
             <label>
-              <input className="input1" type="text" placeholder="Email" />
+              <input 
+               {...register("email", { required: true })}
+              className="input1" type="text" placeholder="Email" />
             </label>
           </div>
 
@@ -64,6 +76,7 @@ const Register = () => {
             <Hide className="sauron" />
             <label>
               <input
+              {...register("password", { required: true })}
                 className="input2"
                 type="password"
                 placeholder="password"
@@ -77,6 +90,7 @@ const Register = () => {
             <Hide className="sauron" />
             <label>
               <input
+              {...register("password2", { required: true })}
                 className="input2"
                 type="password"
                 placeholder="password"

@@ -5,15 +5,32 @@ import {
   LodingAction,
   LodingErrorAction,
   LodingSuccersAction,
+  RegisterAction,
+  RegisterErrorAction,
+  RegisterSuccersAction,
   User,
   UserActionTypes,
   UsersAction,
 } from "./reducer";
-import { signIn } from "../../api/authApi";
+import { registerIn, signIn } from "../../api/authApi";
+
+
+export const registerStart = (): RegisterAction => {
+  return {
+    type: UserActionTypes.REGISTER,
+  };
+};
 
 export const loginStart = (): LodingAction => {
   return {
     type: UserActionTypes.LOGIN,
+  };
+};
+
+export const registerSuccess = (user: User): RegisterSuccersAction => {
+  return {
+    type: UserActionTypes.REGISTER_SUCCERS,
+    payload: user,
   };
 };
 
@@ -27,6 +44,13 @@ export const loginSuccess = (user: User): LodingSuccersAction => {
 export const loginError = (error: string): LodingErrorAction => {
   return {
     type: UserActionTypes.LOGIN_ERROR,
+    payload: error,
+  };
+};
+
+export const registerError = (error: string): RegisterErrorAction => {
+  return {
+    type: UserActionTypes.REGISTER_ERROR,
     payload: error,
   };
 };
@@ -56,6 +80,30 @@ export function loginUser(options: Options) {
       );
     } catch (err: any) {
       dispatch(loginError(err.message));
+    }
+  };
+}
+
+export function registerUser(options: Options) {
+  return async function (
+    dispatch: ThunkDispatch<RootState, void, UsersAction>
+  ) {
+    try {
+      dispatch(registerStart());
+      const resp = await registerIn(options);
+      if (!resp.data.email) {
+        throw new Error("User not exist");
+      }
+      dispatch(
+        registerSuccess({
+          avatar: "",
+          email: resp.data.email,
+          id: resp.data.id,
+          userName: resp.data.userName,
+        })
+      );
+    } catch (err: any) {
+      dispatch(registerError(err.message));
     }
   };
 }
