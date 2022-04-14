@@ -9,8 +9,17 @@ import RequireAuth from "./hoc/RecuireAuth";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 import Register from './pages/Register';
+import { useEffect, useState } from "react";
 
 function App() {
+  
+  const [isInitialized, setIsInitialized] = useState(false)
+
+  useEffect(() => {
+
+  }, [])
+
+  if (!isInitialized) return <h1>Loading...</h1>
   return (
     <Provider store={store}>
       <Routes>
