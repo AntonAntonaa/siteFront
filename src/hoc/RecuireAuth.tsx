@@ -8,9 +8,11 @@ const RequireAuth: React.FC = ({ children }) => {
   const user = useAppSelector((state) => state.user.user);
 
   console.log("LOCATIOMN", { location, user });
-  if (!user?.email) {
+  if (!user?.email)
+ {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
+  console.log(user)
 
   return <>{children}</>;
 };

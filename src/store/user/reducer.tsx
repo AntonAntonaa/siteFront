@@ -55,7 +55,7 @@ const initialState: UserState = {
   user: JSON.parse(localStorage.getItem("USER") || "null"),
   loading: false,
   error: null,
-  token: localStorage.getItem("AUTHTOKEN"),
+  token: localStorage.getItem("token"),
 };
 
 export type UsersAction =
@@ -73,15 +73,15 @@ export const userReducer = (
   switch (action.type) {
     case UserActionTypes.LOGIN:
       console.log(1);
-      
+
       localStorage.removeItem("USER");
-      localStorage.removeItem("AUTHTOKEN");
+
       return { user: null, loading: true, error: null, token: null };
     case UserActionTypes.LOGIN_SUCCERS:
       console.log(2);
-      
+
       localStorage.setItem("USER", JSON.stringify(action.payload));
-      localStorage.setItem("AUTHTOKEN", action.token);
+
       return {
         user: action.payload,
         loading: false,
@@ -91,18 +91,17 @@ export const userReducer = (
     case UserActionTypes.LOGIN_ERROR:
       console.log(3);
       localStorage.removeItem("USER");
-      localStorage.removeItem("AUTHTOKEN");
       return { user: null, loading: false, error: action.payload, token: null };
 
     case UserActionTypes.REGISTER:
       console.log(4);
       localStorage.removeItem("USER");
-      localStorage.removeItem("AUTHTOKEN");
+
       return { user: null, loading: true, error: null, token: null };
     case UserActionTypes.REGISTER_SUCCERS:
       console.log(5);
       localStorage.setItem("USER", JSON.stringify(action.payload));
-      localStorage.setItem("AUTHTOKEN", action.token);
+
       return {
         user: action.payload,
         loading: false,
@@ -112,7 +111,7 @@ export const userReducer = (
     case UserActionTypes.REGISTER_ERROR:
       console.log(6);
       localStorage.removeItem("USER");
-      localStorage.removeItem("AUTHTOKEN");
+
       return { user: null, loading: false, error: action.payload, token: null };
 
     default:

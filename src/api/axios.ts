@@ -16,12 +16,9 @@ axiosInstance.interceptors.request.use((request) => {
 });
 
 axiosInstance.interceptors.response.use((resp) => {
-  console.log('DONE1', resp.data)
   if (resp.data.token) {
-    console.log('DONE')
     localStorage.setItem('token', resp.data.token)
   }
-
   return resp
 })
 

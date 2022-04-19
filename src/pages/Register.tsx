@@ -35,17 +35,6 @@ const Register = () => {
     const email = formData.email as string;
     const password = formData.password as string;
 
-  
-
-    if (typeof password != "string") {
-      return;
-    }
-    console.log(password);
-    if (typeof email != "string") {
-      return;
-    }
-    console.log(email);
-
     await dispatch(
       registerUser({
         email,

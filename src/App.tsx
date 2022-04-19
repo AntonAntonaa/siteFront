@@ -8,49 +8,53 @@ import Login from "./pages/Login";
 import RequireAuth from "./hoc/RecuireAuth";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
-import Register from './pages/Register';
+import Register from "./pages/Register";
 import { useEffect, useState } from "react";
 
 function App() {
-  
-  const [isInitialized, setIsInitialized] = useState(false)
+  // const [isInitialized, setIsInitialized] = useState(false)
 
-  useEffect(() => {
+  // useEffect(() => {
 
-  }, [])
+  // }, [])
 
-  if (!isInitialized) return <h1>Loading...</h1>
+  // if (!isInitialized) return <h1>Loading...</h1>
   return (
     <Provider store={store}>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/product" element={<Product />} />
-          <Route path="/product/:id" element={<SinglePage />} />
           <Route path="/registration" element={<Register />} />
-          {/* <Route path="/profile" element={<Profile />} /> */}
-          {/* <Route
-            path="/protected"
-            element={
-              <RequireAuth>
-                <Editproduct />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/protected"
-            element={
-              <RequireAuth>
-                <Creatproduct />
-              </RequireAuth>
-            }
-          /> */}
+
           <Route
             path="/profile"
             element={
               <RequireAuth>
                 <Profile />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/product"
+            element={
+              <RequireAuth>
+                <Product />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <RequireAuth>
+                <Home />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/product/:id"
+            element={
+              <RequireAuth>
+                <SinglePage />
               </RequireAuth>
             }
           />
